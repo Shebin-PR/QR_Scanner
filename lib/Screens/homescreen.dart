@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -20,9 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.reassemble();
     if (Platform.isAndroid) {
       controller!.pauseCamera();
-    } else if (Platform.isIOS) {
-      controller!.resumeCamera();
     }
+    controller!.resumeCamera();
   }
 
   @override
@@ -36,7 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
               key: qrKey,
               onQRViewCreated: _onQRViewCreated,
               overlay: QrScannerOverlayShape(
-                  cutOutSize: MediaQuery.of(context).size.width * 0.8),
+                cutOutSize: MediaQuery.of(context).size.width * 0.8,
+              ),
             ),
           ),
           Expanded(
